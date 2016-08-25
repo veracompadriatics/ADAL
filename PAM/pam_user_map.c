@@ -1,15 +1,16 @@
-
 /*
   Pam module to change user names arbitrarily in the pam stack.
+  Credits: adapted original code from
+  https://github.com/MariaDB/server/blob/10.1/plugin/auth_pam/mapper/pam_user_map.c
 
   Compile as
 
      gcc pam_user_map.c -shared -lpam -fPIC -o pam_user_map.so
 
   Install as appropriate (for example, in /lib/security/).
-  Add to your /etc/pam.d/mysql (preferrably, at the end) this line:
+  Add to your /etc/pam.d/common-auth (preferrably, at the top) this line:
 =========================================================
-auth            required        pam_user_map.so
+auth            optional        pam_user_map.so
 =========================================================
 
   And create /etc/security/user_map.conf with the desired mapping
